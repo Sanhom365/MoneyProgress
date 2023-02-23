@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="Begin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">08:00</Value>
+    </Setting>
+    <Setting Name="Finish" Type="System.String" Scope="User">
+      <Value Profile="(Default)">16:30</Value>
+    </Setting>
+    <Setting Name="NoonBreak" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NoonBegin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">11:30</Value>
+    </Setting>
+    <Setting Name="NoonFinish" Type="System.String" Scope="User">
+      <Value Profile="(Default)">13:00</Value>
+    </Setting>
+    <Setting Name="Salary" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="WorkingDays" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Refresh" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="x" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
