@@ -136,7 +136,39 @@ Public Class frmSetting
 	End Sub
 
 	Private Sub nud_ValueChanged(sender As Object, e As EventArgs) Handles nudHour1.ValueChanged, nudHour2.ValueChanged, nudHour3.ValueChanged, nudHour4.ValueChanged, nudMinute1.ValueChanged, nudMinute2.ValueChanged, nudMinute3.ValueChanged, nudMinute4.ValueChanged
+		If nudHour1.Value > nudHour2.Value Then
+			chkNoonBreak.Checked = False
+			chkNoonBreak.Enabled = False
+		Else
+			chkNoonBreak.Enabled = True
+		End If
+		If chkNoonBreak.Checked Then
+			nudHour3.Minimum = nudHour1.Value + 1
+			nudHour3.Maximum = nudHour2.Value - 1
+			nudHour4.Minimum = nudHour1.Value + 1
+			nudHour4.Maximum = nudHour2.Value - 1
+		End If
+		If nudHour3.Value = nudHour4.Value Then
+			If sender.Name = "nudHour3" Then
+				sender.value -= 1
+			ElseIf sender.Name = "nudHour4" Then
+				sender.value += 1
+			End If
+		End If
 		setColor()
+	End Sub
+
+	Private Sub chkNoonBreak_CheckedChanged(sender As Object, e As EventArgs) Handles chkNoonBreak.CheckedChanged
+		nudHour3.Enabled = chkNoonBreak.Checked
+		nudHour4.Enabled = chkNoonBreak.Checked
+		nudMinute3.Enabled = chkNoonBreak.Checked
+		nudMinute4.Enabled = chkNoonBreak.Checked
+		lblHour3.Enabled = chkNoonBreak.Checked
+		lblHour4.Enabled = chkNoonBreak.Checked
+		lblMinute3.Enabled = chkNoonBreak.Checked
+		lblMinute4.Enabled = chkNoonBreak.Checked
+		lblNoonBegin.Enabled = chkNoonBreak.Checked
+		lblNoonFinish.Enabled = chkNoonBreak.Checked
 	End Sub
 
 	Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
@@ -167,6 +199,16 @@ Public Class frmSetting
 		End If
 	End Sub
 
+	Private Sub lblPage_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblPage.LinkClicked
+		' 打开浏览器并访问链接的 URL
+		Process.Start("https://github.com/Sanhom365/MoneyProgress")
+	End Sub
+
+	Private Sub lblIssues_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblIssues.LinkClicked
+		' 打开浏览器并访问链接的 URL
+		Process.Start("https://github.com/Sanhom365/MoneyProgress/issues")
+	End Sub
+
 	Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 		setColor()
 	End Sub
@@ -183,5 +225,6 @@ Public Class frmSetting
 		If chkNoonBreak.Checked Then
 			WorkingTimes -= (noonfinish - noonbegin)
 		End If
+		setColor()
 	End Sub
 End Class

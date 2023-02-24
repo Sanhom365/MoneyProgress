@@ -60,6 +60,8 @@ Partial Class frmSetting
 		Me.lblRefresh = New System.Windows.Forms.Label()
 		Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
 		Me.lblInfo = New System.Windows.Forms.Label()
+		Me.lblPage = New System.Windows.Forms.LinkLabel()
+		Me.lblIssues = New System.Windows.Forms.LinkLabel()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlIcon.SuspendLayout()
 		CType(Me.nudHour1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,6 +82,7 @@ Partial Class frmSetting
 		Me.btnExit.BackColor = System.Drawing.Color.Transparent
 		Me.btnExit.BackgroundImage = Global.MoneyProgress.My.Resources.Resources.x
 		Me.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+		Me.btnExit.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
 		Me.btnExit.FlatAppearance.BorderSize = 0
 		Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -87,7 +90,7 @@ Partial Class frmSetting
 		Me.btnExit.Name = "btnExit"
 		Me.btnExit.Size = New System.Drawing.Size(23, 23)
 		Me.btnExit.TabIndex = 0
-		Me.btnExit.UseVisualStyleBackColor = False
+		Me.btnExit.UseVisualStyleBackColor = True
 		'
 		'picIcon
 		'
@@ -165,7 +168,7 @@ Partial Class frmSetting
 		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
 		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
 		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
-		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17.0!))
+		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
 		Me.tlpProgress.Cursor = System.Windows.Forms.Cursors.AppStarting
 		Me.tlpProgress.Location = New System.Drawing.Point(152, 165)
 		Me.tlpProgress.Name = "tlpProgress"
@@ -486,16 +489,20 @@ Partial Class frmSetting
 		'
 		'btnSave
 		'
-		Me.btnSave.BackColor = System.Drawing.Color.DarkGray
+		Me.btnSave.BackColor = System.Drawing.Color.Transparent
+		Me.btnSave.BackgroundImage = Global.MoneyProgress.My.Resources.Resources.button
+		Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+		Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.btnSave.FlatAppearance.BorderSize = 0
+		Me.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+		Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnSave.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-		Me.btnSave.Location = New System.Drawing.Point(223, 321)
+		Me.btnSave.Location = New System.Drawing.Point(220, 322)
 		Me.btnSave.Name = "btnSave"
-		Me.btnSave.Size = New System.Drawing.Size(193, 30)
+		Me.btnSave.Size = New System.Drawing.Size(200, 31)
 		Me.btnSave.TabIndex = 31
-		Me.btnSave.Text = "💰 立即计价！💰"
-		Me.btnSave.UseVisualStyleBackColor = False
+		Me.btnSave.UseVisualStyleBackColor = True
 		'
 		'nudRefresh
 		'
@@ -537,6 +544,32 @@ Partial Class frmSetting
 		Me.lblInfo.TabIndex = 34
 		Me.lblInfo.Text = "根据以上信息，一个月工作 {0} 天：" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一天能赚 {1} 元，" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一天工时 {2} 小时，" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "一秒钟能赚 {3} 元。"
 		'
+		'lblPage
+		'
+		Me.lblPage.AutoSize = True
+		Me.lblPage.BackColor = System.Drawing.Color.Transparent
+		Me.lblPage.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+		Me.lblPage.Location = New System.Drawing.Point(13, 12)
+		Me.lblPage.Name = "lblPage"
+		Me.lblPage.Size = New System.Drawing.Size(86, 17)
+		Me.lblPage.TabIndex = 35
+		Me.lblPage.TabStop = True
+		Me.lblPage.Text = "Github 仓库页"
+		Me.lblPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
+		'lblIssues
+		'
+		Me.lblIssues.AutoSize = True
+		Me.lblIssues.BackColor = System.Drawing.Color.Transparent
+		Me.lblIssues.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+		Me.lblIssues.Location = New System.Drawing.Point(13, 35)
+		Me.lblIssues.Name = "lblIssues"
+		Me.lblIssues.Size = New System.Drawing.Size(56, 17)
+		Me.lblIssues.TabIndex = 36
+		Me.lblIssues.TabStop = True
+		Me.lblIssues.Text = "问题反馈"
+		Me.lblIssues.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
 		'frmSetting
 		'
 		Me.AcceptButton = Me.btnSave
@@ -545,6 +578,8 @@ Partial Class frmSetting
 		Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.CancelButton = Me.btnExit
 		Me.ClientSize = New System.Drawing.Size(640, 480)
+		Me.Controls.Add(Me.lblIssues)
+		Me.Controls.Add(Me.lblPage)
 		Me.Controls.Add(Me.lblInfo)
 		Me.Controls.Add(Me.tlpProgress)
 		Me.Controls.Add(Me.lblRefresh)
@@ -584,7 +619,7 @@ Partial Class frmSetting
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Name = "frmSetting"
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-		Me.Text = "frmSetting"
+		Me.Text = "搞钱进度条"
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlIcon.ResumeLayout(False)
 		CType(Me.nudHour1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -639,4 +674,6 @@ Partial Class frmSetting
 	Friend WithEvents lblRefresh As Label
 	Friend WithEvents Timer1 As Timer
 	Friend WithEvents lblInfo As Label
+	Friend WithEvents lblPage As LinkLabel
+	Friend WithEvents lblIssues As LinkLabel
 End Class

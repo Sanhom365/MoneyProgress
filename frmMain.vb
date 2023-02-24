@@ -54,15 +54,19 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.ShowInTaskbar = False
         Me.Icon = My.Resources.Money
         NotifyIconMain.Icon = Me.Icon
         Dim radius As Integer = 13 '设置圆角半径
         Dim regionHandle As IntPtr = CreateRoundRectRgn(0, 0, Me.Width, Me.Height, radius, radius)
         SetWindowRgn(Me.Handle, regionHandle, True)
         changeText()
-        Me.Location = New Point(x, -97)
         Timer1.Interval = My.Settings.Refresh * 1000
         Timer1.Start()
+        Me.Location = New Point(x, -97)
+        frmSetting.Show()
+        frmSetting.Hide()
+        Me.Hide()
     End Sub
 
     ' 在 Form 的 Paint 事件处理程序中添加以下代码
@@ -79,6 +83,16 @@ Public Class frmMain
 
         ' 设置 ProgressBar 的 Region 属性
         ProgressBar1.Region = New Region(path)
+    End Sub
+
+    Private Sub NotifyIconMain_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIconMain.MouseDoubleClick
+        If e.Button = MouseButtons.Left Then
+            If Me.Visible Then
+                Me.Hide()
+            Else
+                Me.Show()
+            End If
+        End If
     End Sub
 
     Private Sub NotifyIconMain_MouseClick(sender As Object, e As MouseEventArgs) Handles NotifyIconMain.MouseClick
@@ -111,10 +125,10 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
-        'For i As Byte = 0 To 19
-        '    Threading.Thread.Sleep(200)
-        '    Application.DoEvents()
-        'Next
+        For i As Byte = 0 To 9
+            Threading.Thread.Sleep(200)
+            Application.DoEvents()
+        Next
         Me.Top = -96
     End Sub
 
@@ -150,4 +164,5 @@ Public Class frmMain
         Me.Close()
         Application.Exit()
     End Sub
+
 End Class
