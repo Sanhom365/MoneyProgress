@@ -80,20 +80,7 @@ Public Class frmSetting
 		If nowDay = 1 Then
 			My.Settings.WorkingDays = calculate(nudWorkingDays.Maximum)
 		End If
-		nudWorkingDays.Value = My.Settings.WorkingDays
-		nudRefresh.Value = My.Settings.Refresh
-		nudHour1.Value = Time2Text(My.Settings.Begin)(0)
-		nudHour2.Value = Time2Text(My.Settings.Finish)(0)
-		nudHour3.Value = Time2Text(My.Settings.NoonBegin)(0)
-		nudHour4.Value = Time2Text(My.Settings.NoonFinish)(0)
-		nudMinute1.Value = Time2Text(My.Settings.Begin)(1)
-		nudMinute2.Value = Time2Text(My.Settings.Finish)(1)
-		nudMinute3.Value = Time2Text(My.Settings.NoonBegin)(1)
-		nudMinute4.Value = Time2Text(My.Settings.NoonFinish)(1)
-		mskSalary.Text = My.Settings.Salary.ToString
-		chkNoonBreak.Checked = My.Settings.NoonBreak
-		WorkingHours()
-		lblInfo.Text = String.Format(lblInfo.Text, {nudWorkingDays.Value, CInt(mskSalary.Text) / nudWorkingDays.Value, WorkingTimes.TotalHours, CInt(mskSalary.Text) / nudWorkingDays.Value / WorkingTimes.TotalSeconds})
+		ReadSettings()
 		Timer1.Interval = My.Settings.Refresh * 1000
 		Timer1.Start()
 	End Sub
@@ -211,6 +198,23 @@ Public Class frmSetting
 
 	Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 		setColor()
+	End Sub
+
+	Private Sub ReadSettings()
+		nudWorkingDays.Value = My.Settings.WorkingDays
+		nudRefresh.Value = My.Settings.Refresh
+		nudHour1.Value = Time2Text(My.Settings.Begin)(0)
+		nudHour2.Value = Time2Text(My.Settings.Finish)(0)
+		nudHour3.Value = Time2Text(My.Settings.NoonBegin)(0)
+		nudHour4.Value = Time2Text(My.Settings.NoonFinish)(0)
+		nudMinute1.Value = Time2Text(My.Settings.Begin)(1)
+		nudMinute2.Value = Time2Text(My.Settings.Finish)(1)
+		nudMinute3.Value = Time2Text(My.Settings.NoonBegin)(1)
+		nudMinute4.Value = Time2Text(My.Settings.NoonFinish)(1)
+		mskSalary.Text = My.Settings.Salary.ToString
+		chkNoonBreak.Checked = My.Settings.NoonBreak
+		WorkingHours()
+		lblInfo.Text = String.Format(lblInfo.Text, {nudWorkingDays.Value, CInt(mskSalary.Text) / nudWorkingDays.Value, WorkingTimes.TotalHours, CInt(mskSalary.Text) / nudWorkingDays.Value / WorkingTimes.TotalSeconds})
 	End Sub
 
 	Private Sub WorkingHours()

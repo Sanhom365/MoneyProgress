@@ -120,7 +120,7 @@ Partial Class frmSetting
 		Me.lblTitle.AutoSize = True
 		Me.lblTitle.BackColor = System.Drawing.Color.Transparent
 		Me.lblTitle.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-		Me.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke
+		Me.lblTitle.ForeColor = System.Drawing.Color.Gold
 		Me.lblTitle.Location = New System.Drawing.Point(275, 111)
 		Me.lblTitle.Name = "lblTitle"
 		Me.lblTitle.Size = New System.Drawing.Size(90, 22)
@@ -168,7 +168,7 @@ Partial Class frmSetting
 		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
 		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
 		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
-		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+		Me.tlpProgress.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
 		Me.tlpProgress.Cursor = System.Windows.Forms.Cursors.AppStarting
 		Me.tlpProgress.Location = New System.Drawing.Point(152, 165)
 		Me.tlpProgress.Name = "tlpProgress"

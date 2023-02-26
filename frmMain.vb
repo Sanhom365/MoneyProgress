@@ -6,6 +6,7 @@ Public Class frmMain
     Dim x As Integer = My.Settings.x
     Dim moveForm As Boolean = False ' 鼠标移动时是否移动窗口
     Dim startX As Single
+    Dim inspirational As String() = Split(My.Resources.Inspirational, vbCrLf)
 
     <DllImport("Gdi32.dll", EntryPoint:="CreateRoundRectRgn")>
     Private Shared Function CreateRoundRectRgn(ByVal x1 As Integer, ByVal y1 As Integer, ByVal x2 As Integer, ByVal y2 As Integer, ByVal cx As Integer, ByVal cy As Integer) As IntPtr
@@ -35,6 +36,7 @@ Public Class frmMain
                             percent = ((noonbegin - begin).Ticks + (nowtime - noonfinish).Ticks) / WorkingTimes.Ticks
                         End If
                     End If
+                    percent = Int(percent * 10000) / 10000
             End Select
             ProgressBar1.Value = percent * 100
             lblPercent.Text = ProgressBar1.Value.ToString & "%"
@@ -46,10 +48,12 @@ Public Class frmMain
                     NotifyIconMain.Text = "今日已下班，可以愉快地回家啦！"
                     lblContent.Text = "今日已赚取 "
                 Case Else
-                    NotifyIconMain.Text = String.Format("今日已赚取 {0} 元", percent * My.Settings.Salary / My.Settings.WorkingDays)
+                    NotifyIconMain.Text = String.Format("今日已赚取 {0} 元", Int(percent * My.Settings.Salary / My.Settings.WorkingDays * 10000) / 10000)
                     lblContent.Text = "今日预计赚取 "
             End Select
-            lblContent.Text = lblContent.Text & My.Settings.Salary / My.Settings.WorkingDays & " 元，" & NotifyIconMain.Text.Replace("今日", "")
+            lblContent.Text = lblContent.Text & Int(My.Settings.Salary / My.Settings.WorkingDays * 10000) / 10000 & " 元，" & NotifyIconMain.Text.Replace("今日", "")
+            Dim r As New Random
+            lblInspirational.Text = inspirational(r.Next(0, inspirational.Length - 1))
         End If
     End Sub
 
@@ -60,13 +64,14 @@ Public Class frmMain
         Dim radius As Integer = 13 '设置圆角半径
         Dim regionHandle As IntPtr = CreateRoundRectRgn(0, 0, Me.Width, Me.Height, radius, radius)
         SetWindowRgn(Me.Handle, regionHandle, True)
+        frmSetting.Show()
+        frmSetting.Hide()
         changeText()
         Timer1.Interval = My.Settings.Refresh * 1000
         Timer1.Start()
-        Me.Location = New Point(x, -97)
-        frmSetting.Show()
-        frmSetting.Hide()
+        Me.Location = New Point(x, -136)
         Me.Hide()
+        Me.Show()
     End Sub
 
     ' 在 Form 的 Paint 事件处理程序中添加以下代码
@@ -126,25 +131,25 @@ Public Class frmMain
 
     Private Sub frmMain_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
         For i As Byte = 0 To 9
-            Threading.Thread.Sleep(200)
+            Threading.Thread.Sleep(100)
             Application.DoEvents()
         Next
-        Me.Top = -96
+        Me.Top = -136
     End Sub
 
-    Private Sub frmMain_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown, lblToday.MouseDown, lblPercent.MouseDown, lblLoaf.MouseDown, lblContent.MouseDown
+    Private Sub frmMain_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown, lblToday.MouseDown, lblPercent.MouseDown, lblLoaf.MouseDown, lblContent.MouseDown, lblInspirational.MouseDown
         moveForm = True
         Me.Cursor = Cursors.SizeAll
         startX = e.X
     End Sub
 
-    Private Sub frmMain_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp, lblToday.MouseDown, lblPercent.MouseDown, lblLoaf.MouseDown, lblContent.MouseDown
+    Private Sub frmMain_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp, lblToday.MouseUp, lblPercent.MouseUp, lblLoaf.MouseUp, lblContent.MouseUp, lblInspirational.MouseUp
         moveForm = False
         Me.Cursor = Cursors.Arrow
         x = Me.Left
     End Sub
 
-    Private Sub frmMain_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove, lblToday.MouseDown, lblPercent.MouseDown, lblLoaf.MouseDown, lblContent.MouseDown
+    Private Sub frmMain_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove, lblToday.MouseMove, lblPercent.MouseMove, lblLoaf.MouseMove, lblContent.MouseMove, lblInspirational.MouseMove
         If moveForm Then
             Dim moveX As Integer
             moveX = e.X - startX
@@ -164,5 +169,4 @@ Public Class frmMain
         Me.Close()
         Application.Exit()
     End Sub
-
 End Class

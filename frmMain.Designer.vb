@@ -36,6 +36,7 @@ Partial Class frmMain
 		Me.lblPercent = New System.Windows.Forms.Label()
 		Me.lblContent = New System.Windows.Forms.Label()
 		Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+		Me.lblInspirational = New System.Windows.Forms.Label()
 		Me.cmsNotify.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
@@ -98,7 +99,7 @@ Partial Class frmMain
 		Me.lblLoaf.Name = "lblLoaf"
 		Me.lblLoaf.Size = New System.Drawing.Size(74, 21)
 		Me.lblLoaf.TabIndex = 2
-		Me.lblLoaf.Text = "一起摸鱼"
+		Me.lblLoaf.Text = "一起赚钱"
 		Me.lblLoaf.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'ProgressBar1
@@ -138,7 +139,7 @@ Partial Class frmMain
 		Me.lblContent.AutoSize = True
 		Me.lblContent.BackColor = System.Drawing.Color.Transparent
 		Me.lblContent.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-		Me.lblContent.ForeColor = System.Drawing.Color.White
+		Me.lblContent.ForeColor = System.Drawing.Color.Gold
 		Me.lblContent.Location = New System.Drawing.Point(119, 64)
 		Me.lblContent.Name = "lblContent"
 		Me.lblContent.Size = New System.Drawing.Size(0, 20)
@@ -148,12 +149,28 @@ Partial Class frmMain
 		'Timer1
 		'
 		'
+		'lblInspirational
+		'
+		Me.lblInspirational.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+			Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.lblInspirational.BackColor = System.Drawing.Color.Transparent
+		Me.lblInspirational.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+		Me.lblInspirational.ForeColor = System.Drawing.Color.Orange
+		Me.lblInspirational.Location = New System.Drawing.Point(12, 84)
+		Me.lblInspirational.Name = "lblInspirational"
+		Me.lblInspirational.Size = New System.Drawing.Size(476, 46)
+		Me.lblInspirational.TabIndex = 7
+		Me.lblInspirational.Text = "一起赚钱"
+		Me.lblInspirational.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.DimGray
-		Me.ClientSize = New System.Drawing.Size(500, 99)
+		Me.ClientSize = New System.Drawing.Size(500, 139)
+		Me.Controls.Add(Me.lblInspirational)
 		Me.Controls.Add(Me.lblContent)
 		Me.Controls.Add(Me.lblPercent)
 		Me.Controls.Add(Me.lblToday)
@@ -187,4 +204,5 @@ Partial Class frmMain
 	Friend WithEvents lblPercent As Label
 	Friend WithEvents lblContent As Label
 	Friend WithEvents Timer1 As Timer
+	Friend WithEvents lblInspirational As Label
 End Class
