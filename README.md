@@ -6,5 +6,5 @@
 [Lakr233/MoneyProgress](https://github.com/Lakr233/MoneyProgress)
 
 如果觉得有意思，可以请作者喝罐牛奶😁  
-![zfb](https://user-images.githubusercontent.com/58111416/220932135-2d3b28b2-5c8f-46cd-8986-d4d4208b5c6c.jpg)
+![zfb](https://user-images.githubusercontent.com/58111416/221396294-171cfa75-7b1b-425b-ba8a-f6c79fdf7c9c.jpg)
 ![wx](https://user-images.githubusercontent.com/58111416/220933337-99eafd6c-e4d3-4fd9-a8a0-8fd69fbb7c4f.png)
