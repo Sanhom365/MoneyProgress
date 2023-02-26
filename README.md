@@ -5,6 +5,6 @@
 受以下的项目启发：  
 [Lakr233/MoneyProgress](https://github.com/Lakr233/MoneyProgress)
 
-如果觉得有意思，可以请作者喝罐牛奶😁  
+如果觉得有意思，可以请作者喝杯牛奶🥛鼓励一下😁  
 ![zfb](https://user-images.githubusercontent.com/58111416/221396294-171cfa75-7b1b-425b-ba8a-f6c79fdf7c9c.jpg)
 ![wx](https://user-images.githubusercontent.com/58111416/220933337-99eafd6c-e4d3-4fd9-a8a0-8fd69fbb7c4f.png)
