@@ -16,47 +16,6 @@ Public Class frmSetting
 	Private Shared Function SetWindowRgn(ByVal hWnd As IntPtr, ByVal hRgn As IntPtr, ByVal bRedraw As Boolean) As Integer
 	End Function
 
-	Public Sub setColor()
-		If Me.InvokeRequired Then
-			Me.Invoke(New Action(AddressOf setColor))
-		Else
-			' 在 UI 线程中设置小时的颜色
-			For i = 1 To 24
-				Select Case i
-					Case nudHour1.Value
-						tlpProgress.SetCellPosition(diamond(0), New TableLayoutPanelCellPosition(i - 1, 0))
-						diamond(0).Location = New Point(1, 1)
-						diamond(0).Visible = True
-					Case nudHour2.Value
-						tlpProgress.SetCellPosition(diamond(1), New TableLayoutPanelCellPosition(i - 1, 0))
-						diamond(1).Location = New Point(1, 1)
-						diamond(1).Visible = True
-					Case Now.Hour
-						tlpProgress.SetCellPosition(diamond(2), New TableLayoutPanelCellPosition(i - 1, 0))
-						diamond(2).Location = New Point(1, 1)
-						diamond(2).Visible = True
-						diamond(2).BringToFront()
-					Case nudHour3.Value
-						If chkNoonBreak.Checked Then
-							tlpProgress.SetCellPosition(diamond(3), New TableLayoutPanelCellPosition(i - 1, 0))
-							diamond(3).Location = New Point(1, 1)
-							diamond(3).Visible = True
-						Else
-							diamond(4).Visible = False
-						End If
-					Case nudHour4.Value
-						If chkNoonBreak.Checked Then
-							tlpProgress.SetCellPosition(diamond(4), New TableLayoutPanelCellPosition(i - 1, 0))
-							diamond(4).Location = New Point(1, 1)
-							diamond(4).Visible = True
-						Else
-							diamond(4).Visible = False
-						End If
-				End Select
-			Next
-		End If
-	End Sub
-
 	Private Sub frmSetting_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 		Me.Icon = My.Resources.Money
 		Dim radius As Integer = 13 '设置圆角半径
@@ -113,6 +72,7 @@ Public Class frmSetting
 			My.Settings.NoonBegin = Text2Time(nudHour3.Value.ToString, nudMinute3.Value.ToString)
 			My.Settings.NoonFinish = Text2Time(nudHour4.Value.ToString, nudMinute4.Value.ToString)
 		End If
+		My.Settings.WorkingDays = nudWorkingDays.Value
 		My.Settings.Salary = CInt(mskSalary.Text)
 		My.Settings.Refresh = nudRefresh.Value
 		WorkingHours()
@@ -197,7 +157,7 @@ Public Class frmSetting
 	End Sub
 
 	Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-		setColor()
+		WorkingHours()
 	End Sub
 
 	Private Sub ReadSettings()
@@ -214,7 +174,6 @@ Public Class frmSetting
 		mskSalary.Text = My.Settings.Salary.ToString
 		chkNoonBreak.Checked = My.Settings.NoonBreak
 		WorkingHours()
-		lblInfo.Text = String.Format(lblInfo.Text, {nudWorkingDays.Value, CInt(mskSalary.Text) / nudWorkingDays.Value, WorkingTimes.TotalHours, CInt(mskSalary.Text) / nudWorkingDays.Value / WorkingTimes.TotalSeconds})
 	End Sub
 
 	Private Sub WorkingHours()
@@ -230,5 +189,47 @@ Public Class frmSetting
 			WorkingTimes -= (noonfinish - noonbegin)
 		End If
 		setColor()
+		lblInfo.Text = String.Format("根据以上信息，一个月工作 {0} 天：{1}一天能赚 {2} 元，{3}一天工时 {4} 小时，{5}一秒钟能赚 {6} 元。", {nudWorkingDays.Value, vbCrLf, Int(CInt(mskSalary.Text) / nudWorkingDays.Value * 10000) / 10000, vbCrLf, WorkingTimes.TotalHours, vbCrLf, Int(CInt(mskSalary.Text) / nudWorkingDays.Value / WorkingTimes.TotalSeconds * 10000) / 10000})
+	End Sub
+
+	Public Sub setColor()
+		If Me.InvokeRequired Then
+			Me.Invoke(New Action(AddressOf setColor))
+		Else
+			' 在 UI 线程中设置小时的颜色
+			For i = 1 To 24
+				Select Case i
+					Case nudHour1.Value
+						tlpProgress.SetCellPosition(diamond(0), New TableLayoutPanelCellPosition(i - 1, 0))
+						diamond(0).Location = New Point(1, 1)
+						diamond(0).Visible = True
+					Case nudHour2.Value
+						tlpProgress.SetCellPosition(diamond(1), New TableLayoutPanelCellPosition(i - 1, 0))
+						diamond(1).Location = New Point(1, 1)
+						diamond(1).Visible = True
+					Case Now.Hour
+						tlpProgress.SetCellPosition(diamond(2), New TableLayoutPanelCellPosition(i - 1, 0))
+						diamond(2).Location = New Point(1, 1)
+						diamond(2).Visible = True
+						diamond(2).BringToFront()
+					Case nudHour3.Value
+						If chkNoonBreak.Checked Then
+							tlpProgress.SetCellPosition(diamond(3), New TableLayoutPanelCellPosition(i - 1, 0))
+							diamond(3).Location = New Point(1, 1)
+							diamond(3).Visible = True
+						Else
+							diamond(4).Visible = False
+						End If
+					Case nudHour4.Value
+						If chkNoonBreak.Checked Then
+							tlpProgress.SetCellPosition(diamond(4), New TableLayoutPanelCellPosition(i - 1, 0))
+							diamond(4).Location = New Point(1, 1)
+							diamond(4).Visible = True
+						Else
+							diamond(4).Visible = False
+						End If
+				End Select
+			Next
+		End If
 	End Sub
 End Class

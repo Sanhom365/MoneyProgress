@@ -184,6 +184,7 @@ Partial Class frmMain
 		Me.Opacity = 0.79R
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
 		Me.Text = "钱条"
+		Me.TopMost = True
 		Me.cmsNotify.ResumeLayout(False)
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)

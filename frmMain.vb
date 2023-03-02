@@ -38,8 +38,9 @@ Public Class frmMain
                     End If
                     percent = Int(percent * 10000) / 10000
             End Select
-            ProgressBar1.Value = percent * 100
-            lblPercent.Text = ProgressBar1.Value.ToString & "%"
+            percent *= 100
+            ProgressBar1.Value = percent
+            lblPercent.Text = percent & "%"
             Select Case percent
                 Case 0
                     NotifyIconMain.Text = "今日上班时间未到，请先准备准备。"
@@ -48,7 +49,7 @@ Public Class frmMain
                     NotifyIconMain.Text = "今日已下班，可以愉快地回家啦！"
                     lblContent.Text = "今日已赚取 "
                 Case Else
-                    NotifyIconMain.Text = String.Format("今日已赚取 {0} 元", Int(percent * My.Settings.Salary / My.Settings.WorkingDays * 10000) / 10000)
+                    NotifyIconMain.Text = String.Format("今日已赚取 {0} 元", Int(percent * My.Settings.Salary / My.Settings.WorkingDays * 10000) / 1000000)
                     lblContent.Text = "今日预计赚取 "
             End Select
             lblContent.Text = lblContent.Text & Int(My.Settings.Salary / My.Settings.WorkingDays * 10000) / 10000 & " 元，" & NotifyIconMain.Text.Replace("今日", "")
