@@ -49,7 +49,7 @@ Public Class frmMain
                     NotifyIconMain.Text = "今日已下班，可以愉快地回家啦！"
                     lblContent.Text = "今日已赚取 "
                 Case Else
-                    NotifyIconMain.Text = String.Format("今日已赚取 {0} 元", Int(percent * My.Settings.Salary / My.Settings.WorkingDays * 10000) / 1000000)
+                    NotifyIconMain.Text = String.Format("今日已赚取 {0} 元", Int(percent * My.Settings.Salary / My.Settings.WorkingDays * 100) / 10000)
                     lblContent.Text = "今日预计赚取 "
             End Select
             lblContent.Text = lblContent.Text & Int(My.Settings.Salary / My.Settings.WorkingDays * 10000) / 10000 & " 元，" & NotifyIconMain.Text.Replace("今日", "")

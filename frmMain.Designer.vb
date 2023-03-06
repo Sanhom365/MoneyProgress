@@ -155,11 +155,11 @@ Partial Class frmMain
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lblInspirational.BackColor = System.Drawing.Color.Transparent
-		Me.lblInspirational.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+		Me.lblInspirational.Font = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
 		Me.lblInspirational.ForeColor = System.Drawing.Color.Orange
 		Me.lblInspirational.Location = New System.Drawing.Point(12, 84)
 		Me.lblInspirational.Name = "lblInspirational"
-		Me.lblInspirational.Size = New System.Drawing.Size(476, 46)
+		Me.lblInspirational.Size = New System.Drawing.Size(476, 54)
 		Me.lblInspirational.TabIndex = 7
 		Me.lblInspirational.Text = "一起赚钱"
 		Me.lblInspirational.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
